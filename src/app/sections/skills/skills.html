@@ -1,1 +1,32 @@
-<p>skills works!</p>
+<section class="skills-section">
+  <img
+    src="assets/img/shadows/green-shadow-skills.png"
+    alt=""
+    class="bg-shadow"
+    aria-hidden="true"
+  />
+
+  <div class="skills-container">
+    <ul class="skills-grid">
+      @for (skill of skills; track skill.name) {
+        <li class="skill" [class.highlight]="skill.highlight">
+          <img [src]="skill.icon" alt="" />
+          <span>{{ label(skill) }}</span>
+        </li>
+      }
+    </ul>
+
+    <div class="skills-text">
+      <div class="title-row">
+        <h2>{{ ts.t('skills.title') }}</h2>
+        <span class="purple-line"></span>
+      </div>
+      <p class="intro">{{ ts.t('skills.intro') }}</p>
+      <h3>{{ ts.t('skills.more.title') }}</h3>
+      <p class="more">{{ ts.t('skills.more.text') }}</p>
+      <button type="button" class="btn-primary" (click)="scrollToContact()">
+        {{ ts.t('skills.cta') }}
+      </button>
+    </div>
+  </div>
+</section>

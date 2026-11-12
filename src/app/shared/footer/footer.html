@@ -1,1 +1,22 @@
-<p>footer works!</p>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="brand">
+      <a routerLink="/" class="logo">J<span class="accent-green">i</span>n<span class="accent-purple">.</span></a>
+      <a routerLink="/imprint" class="legal">{{ ts.t('footer.legal') }}</a>
+    </div>
+
+    <p class="copyright">© Jinsoo Jang {{ year }}</p>
+
+    <div class="socials">
+      <a href="https://github.com/JinSooJang-DA" target="_blank" rel="noopener" aria-label="GitHub">
+        <img src="assets/icons/social/github.svg" alt="GitHub" />
+      </a>
+      <a href="mailto:hello@iamjin.de" aria-label="Email">
+        <img src="assets/icons/social/email.svg" alt="Email" />
+      </a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <img src="assets/icons/social/linkedin.svg" alt="LinkedIn" />
+      </a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,135 @@
+.skills-section {
+  position: relative;
+  width: 100%;
+  min-height: 820px;
+  padding: 109px 0 80px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bg-shadow {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-width: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.skills-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 0 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+
+  @media (max-width: 1050px) {
+    grid-template-columns: 1fr;
+    padding: 0 32px;
+  }
+}
+
+.skills-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 176px);
+  row-gap: 40px;
+  padding-left: 12px;
+
+  @media (max-width: 1050px) {
+    order: 2;
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  @media (max-width: 760px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+
+  img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+
+  &.highlight {
+    color: #9747ff;
+  }
+}
+
+.skills-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+
+  @media (max-width: 1050px) {
+    order: 1;
+    align-items: center;
+    text-align: center;
+  }
+
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-right: -100px;
+    margin-bottom: 40px;
+
+    @media (max-width: 1050px) {
+      margin-right: 0;
+    }
+  }
+
+  h2 {
+    font-size: clamp(44px, 6vw, 88px);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .purple-line {
+    display: block;
+    width: 100px;
+    height: 4px;
+    background-color: #9747ff;
+
+    @media (max-width: 1050px) {
+      display: none;
+    }
+  }
+
+  .intro,
+  .more {
+    max-width: 400px;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  h3 {
+    margin: 44px 0 20px;
+    font-size: clamp(22px, 2.2vw, 32px);
+    font-weight: 600;
+  }
+
+  .btn-primary {
+    margin-top: 40px;
+    height: 58px;
+  }
+}

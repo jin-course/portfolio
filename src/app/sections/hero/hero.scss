@@ -3,23 +3,33 @@
   width: 100%;
   min-height: 100vh;
   padding-top: 109px;
+  background-color: #101726;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
 }
 
+.hero-curve {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 46%;
+  z-index: 2;
+  pointer-events: none;
+  display: block;
+}
+
 .hero-content {
   position: relative;
   z-index: 3;
-  max-width: var(--max-content-width);
   width: 100%;
-  margin: 0 auto;
-  padding: 0 100px 0 60px;
+  padding: 0 100px 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: 24px;
   flex: 1;
 
   @media (max-width: 1050px) {
@@ -33,14 +43,18 @@
 .portrait-wrapper {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  width: 52%;
-  max-width: 620px;
+  width: 54%;
+  max-width: 660px;
+  align-self: flex-end;
+  margin-bottom: -16px;
 
   @media (max-width: 1050px) {
-    width: 90%;
-    max-width: 440px;
+    width: 92%;
+    max-width: 460px;
+    align-self: center;
+    margin-bottom: 0;
   }
 
   .hero-portrait {
@@ -48,11 +62,11 @@
     z-index: 2;
     width: 100%;
     height: auto;
-    max-height: 74vh;
+    max-height: 82vh;
     object-fit: contain;
     display: block;
-    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 72%, transparent 100%);
-    mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 72%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 52% 52% at 50% 48%, #000 74%, transparent 100%);
+    mask-image: radial-gradient(ellipse 52% 52% at 50% 48%, #000 74%, transparent 100%);
   }
 }
 
@@ -64,36 +78,44 @@
   align-items: center;
   text-align: center;
   flex-shrink: 0;
+  margin-bottom: 32px;
 
   .title-group {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     margin-bottom: 36px;
 
     .vertical-text {
       writing-mode: vertical-rl;
       transform: rotate(180deg);
-      font-size: clamp(28px, 3.5vw, 54px);
+      font-size: clamp(32px, 3.8vw, 58px);
       font-weight: 400;
       line-height: 1;
+      color: #ffffff;
     }
 
     .name-role {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
       text-align: left;
 
       h1 {
-        font-size: clamp(42px, 4.8vw, 82px);
+        margin: 0;
+        font-size: clamp(44px, 6.2vw, 90px);
         font-weight: 700;
         line-height: 1.05;
         white-space: nowrap;
+        color: #ffffff;
       }
 
       .role {
-        font-size: clamp(20px, 2.5vw, 42px);
+        margin: 4px 0 0;
+        font-size: clamp(22px, 3.5vw, 52px);
         font-weight: 400;
-        color: var(--accent-purple);
-        letter-spacing: 1px;
+        color: #9747ff;
+        white-space: nowrap;
       }
     }
   }
@@ -105,36 +127,29 @@
     height: 58px;
     padding: 0 34px;
     border-radius: 10px;
-    background-color: var(--accent-green);
-    color: var(--text-white);
+    background-color: #70e61c;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
     font-size: 22px;
+    border: none;
+    cursor: pointer;
     text-decoration: none;
     transition: transform 0.15s ease, background-color 0.15s ease;
 
     &:hover {
-      background-color: var(--accent-purple);
+      background-color: #9747ff;
       transform: scale(1.05);
     }
   }
-}
-
-.hero-wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  z-index: 2;
-  pointer-events: none;
 }
 
 .hero-bottom-bar {
   position: relative;
   z-index: 5;
   width: 100%;
-  padding: 20px 100px 28px 0;
+  padding: 16px 80px 32px 0;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
 
   @media (max-width: 1050px) {
@@ -150,7 +165,7 @@
       display: inline-block;
       width: 100px;
       height: 4px;
-      background-color: var(--accent-purple);
+      background-color: #9747ff;
 
       @media (max-width: 768px) {
         width: 40px;
@@ -159,7 +174,8 @@
 
     a {
       display: inline-flex;
-      color: var(--text-white);
+      align-items: center;
+      color: #ffffff;
       text-decoration: none;
       transition: transform 0.15s ease;
 
@@ -167,7 +183,8 @@
         transform: scale(1.15);
       }
 
-      img {
+      img,
+      svg {
         width: 30px;
         height: 30px;
       }
@@ -175,6 +192,7 @@
 
     .email-text {
       font-size: 20px;
+      color: #ffffff;
 
       @media (max-width: 768px) {
         display: none;
@@ -183,21 +201,27 @@
   }
 
   .scroll-down {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    color: var(--text-white);
+    gap: 10px;
+    color: #ffffff;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 1;
 
     span {
       writing-mode: vertical-rl;
     }
 
-    img {
-      width: 24px;
+    svg {
+      width: 20px;
       height: 24px;
+      flex-shrink: 0;
     }
 
     @media (max-width: 768px) {
