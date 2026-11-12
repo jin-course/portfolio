@@ -1,1 +1,52 @@
-<p>portfolio works!</p>
+<section class="portfolio-section">
+  <img
+    src="assets/img/shadows/purple-shadow-portfolio.png"
+    alt=""
+    class="bg-shadow"
+    aria-hidden="true"
+  />
+
+  <div class="portfolio-header">
+    <div class="title-row">
+      <span class="purple-line short"></span>
+      <h2>{{ ts.t('portfolio.title') }}</h2>
+      <span class="purple-line long"></span>
+    </div>
+    <p class="subtitle">{{ ts.t('portfolio.subtitle') }}</p>
+  </div>
+
+  <div class="projects-list">
+    @for (project of projects; track project.title; let isOdd = $odd) {
+      <article class="project-card" [class.reversed]="isOdd">
+        <div class="project-preview">
+          <img [src]="project.image" [alt]="project.title" />
+        </div>
+
+        <div class="project-details">
+          <h3>{{ project.title }}</h3>
+          <p class="tech-stack">{{ project.techStack }}</p>
+          <p class="description">{{ ts.t(project.descKey) }}</p>
+
+          <div class="action-buttons">
+            <a
+              [href]="project.liveUrl"
+              target="_blank"
+              rel="noopener"
+              class="btn-live"
+            >
+              Live test
+            </a>
+            <a
+              [href]="project.githubUrl"
+              target="_blank"
+              rel="noopener"
+              class="btn-github"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>

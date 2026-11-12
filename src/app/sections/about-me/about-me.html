@@ -7,41 +7,31 @@
   />
 
   <div class="about-container">
-    <!-- 좌측: 제목 + 소개글 + 3가지 핵심 포인트 -->
     <div class="about-text">
       <h2>{{ ts.t('about.title') }}</h2>
       <p class="intro">{{ ts.t('about.intro') }}</p>
 
-      <div class="highlights">
-        <div class="highlight-item">
-          <div class="icon-box">
-            <img src="assets/icons/ui/location.svg" alt="Location" />
-          </div>
-          <p>{{ ts.t('about.point1') }}</p>
-        </div>
+      <div class="info-item">
+        <img src="assets/icons/ui/location.svg" alt="Location" />
+        <p>{{ ts.t('about.location') }}</p>
+      </div>
 
-        <div class="highlight-item">
-          <div class="icon-box">
-            <img src="assets/icons/ui/bulb.svg" alt="Mindset" />
-          </div>
-          <p>{{ ts.t('about.point2') }}</p>
-        </div>
+      <div class="info-item">
+        <img src="assets/icons/ui/bulb.svg" alt="Mindset" />
+        <p>{{ ts.t('about.mindset') }}</p>
+      </div>
 
-        <div class="highlight-item">
-          <div class="icon-box">
-            <img src="assets/icons/ui/puzzle.svg" alt="Problem Solving" />
-          </div>
-          <p>{{ ts.t('about.point3') }}</p>
-        </div>
+      <div class="info-item">
+        <img src="assets/icons/ui/puzzle.svg" alt="Problem Solving" />
+        <p>{{ ts.t('about.problem') }}</p>
       </div>
     </div>
 
-    <!-- 우측: 원형 테두리 프로필 사진 + 우측 연두색 연결선 -->
     <div class="about-visual">
       <div class="circle-frame">
-        <img src="assets/img/profile/about-profile.png" alt="Jinsoo Jang About" />
+        <img src="assets/img/profile/about-profile.webp" alt="Jinsoo Jang About" />
       </div>
-      <span class="green-connector"></span>
+      <span class="green-line"></span>
     </div>
   </div>
 </section>
