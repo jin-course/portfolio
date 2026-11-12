@@ -1,0 +1,83 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a routerLink="/" class="logo" (click)="closeMenu()">
+      J<span class="accent-green">i</span>n<span class="accent-purple">.</span>
+    </a>
+
+    <nav class="desktop-nav">
+      <button type="button" class="nav-link" (click)="navigateToSection('about-me')">
+        {{ ts.t('nav.about') }}
+      </button>
+      <button type="button" class="nav-link" (click)="navigateToSection('skills')">
+        {{ ts.t('nav.skills') }}
+      </button>
+      <button type="button" class="nav-link" (click)="navigateToSection('portfolio')">
+        {{ ts.t('nav.portfolio') }}
+      </button>
+
+      <div class="lang-switch">
+        <button
+          type="button"
+          class="lang-btn"
+          [class.active]="ts.currentLang() === 'de'"
+          (click)="switchLang('de')"
+        >
+          DE
+        </button>
+        <button
+          type="button"
+          class="lang-btn"
+          [class.active]="ts.currentLang() === 'en'"
+          (click)="switchLang('en')"
+        >
+          EN
+        </button>
+      </div>
+    </nav>
+
+    <button
+      type="button"
+      class="burger-btn"
+      [class.open]="menuOpen()"
+      (click)="toggleMenu()"
+      aria-label="Toggle Menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  @if (menuOpen()) {
+    <div class="mobile-overlay">
+      <button type="button" class="mobile-link" (click)="navigateToSection('about-me')">
+        {{ ts.t('nav.about') }}
+      </button>
+      <button type="button" class="mobile-link" (click)="navigateToSection('skills')">
+        {{ ts.t('nav.skills') }}
+      </button>
+      <button type="button" class="mobile-link" (click)="navigateToSection('portfolio')">
+        {{ ts.t('nav.portfolio') }}
+      </button>
+
+      <div class="lang-switch mobile-lang">
+        <button
+          type="button"
+          class="lang-btn"
+          [class.active]="ts.currentLang() === 'de'"
+          (click)="switchLang('de')"
+        >
+          DE
+        </button>
+        <button
+          type="button"
+          class="lang-btn"
+          [class.active]="ts.currentLang() === 'en'"
+          (click)="switchLang('en')"
+        >
+          EN
+        </button>
+      </div>
+    </div>
+  }
+</header>

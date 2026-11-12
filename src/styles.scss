@@ -1,1 +1,122 @@
-/* You can add global styles to this file, and also import other style files */
+/* 1. Google Fonts - Poppins & Montserrat 불러오기 */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* 2. Style 1 a (Green & Purple 테마) 전역 컬러 변수 */
+:root {
+  --bg-dark: #141d2f;          /* rgba(20, 29, 47, 1) */
+  --accent-green: #70e61c;     /* rgba(112, 230, 28, 1) */
+  --accent-purple: #9747ff;    /* rgba(151, 71, 255, 1) */
+  --accent-blue: #1cdae6;      /* rgba(28, 218, 230, 1) */
+  --error-red: #e61c40;
+  --text-white: #ffffff;
+  --text-disabled: #b6b6b6;
+  --max-content-width: 1440px;
+}
+
+/* 3. 기본 리셋 및 스크롤 설정 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* 4. 공통 섹션 컨테이너 (1440px 중앙 정렬) */
+.section-container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 100px;
+
+  @media (max-width: 960px) {
+    padding: 0 32px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 16px;
+  }
+}
+
+/* 5. 공통 Primary 버튼 (1. Button - primary) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--accent-green);
+  color: var(--text-white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 23px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background-color: var(--accent-purple);
+    transform: scale(1.05);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--text-white);
+    color: #000000;
+    transform: scale(1);
+  }
+
+  &:disabled {
+    background-color: var(--text-disabled);
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+/* 6. Contact 폼 공통 입력창 스타일 (21~23. text box v1) */
+.form-field {
+  width: 100%;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--accent-purple);
+  border-radius: 10px;
+  padding: 15px 25px;
+  color: var(--text-white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &::placeholder {
+    color: var(--text-white);
+  }
+
+  &:hover,
+  &:focus {
+    border-color: var(--accent-green);
+  }
+
+  &.is-invalid {
+    border-color: var(--error-red);
+  }
+
+  &.is-valid {
+    border-color: var(--accent-green);
+  }
+}
+
+/* 7. 브라우저 자동완성 시 다크 배경 깨짐 방지 (체크리스트 필수) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-white);
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg-dark) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}

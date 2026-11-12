@@ -1,0 +1,67 @@
+<section class="hero-section">
+  <div class="hero-container">
+    <!-- 좌측: 프로필 사진 + 뒤쪽 보라/연두빛 쉐도우 -->
+    <div class="hero-visual">
+      <img
+        src="assets/img/shadows/photo-shadows.png"
+        alt=""
+        class="photo-shadow"
+        aria-hidden="true"
+      />
+      <img
+        src="assets/img/profile/hero-profile.png"
+        alt="Jinsoo Jang Portrait"
+        class="hero-portrait"
+      />
+    </div>
+
+    <!-- 우측: 세로 'I am' + 이름 + 직함 + CTA 버튼 -->
+    <div class="hero-content">
+      <div class="title-wrapper">
+        <span class="vertical-iam">{{ ts.t('hero.iam') }}</span>
+        <div class="name-block">
+          <h1>Jinsoo Jang</h1>
+          <p class="role">{{ ts.t('hero.role') }}</p>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn-primary cta-btn"
+        (click)="scrollToSection('contact')"
+      >
+        {{ ts.t('hero.cta') }}
+      </button>
+    </div>
+  </div>
+
+  <!-- 하단 곡선 웨이브 배경 -->
+  <img
+    src="assets/img/shadows/hero-bg.png"
+    alt=""
+    class="hero-wave"
+    aria-hidden="true"
+  />
+
+  <!-- 하단 좌측 소셜 링크 바 & 우측 Scroll down 안내 -->
+  <div class="hero-bottom-bar">
+    <div class="social-bar">
+      <span class="green-line"></span>
+      <a href="https://github.com/jin-course" target="_blank" rel="noopener" aria-label="GitHub">
+        <img src="assets/icons/social/github.svg" alt="GitHub" />
+      </a>
+      <button type="button" class="icon-btn" (click)="scrollToSection('contact')" aria-label="Email">
+        <img src="assets/icons/social/email.svg" alt="Email" />
+      </button>
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <img src="assets/icons/social/linkedin.svg" alt="LinkedIn" />
+      </a>
+      <span class="email-text">hello&#64;iamjin.de</span>
+    </div>
+
+    <button type="button" class="scroll-down" (click)="scrollToSection('about-me')">
+      <span>{{ ts.t('hero.scroll') }}</span>
+      <img src="assets/icons/ui/arrow.svg" alt="Scroll down" class="down-arrow" />
+    </button>
+  </div>
+</section>
