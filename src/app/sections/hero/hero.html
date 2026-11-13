@@ -17,22 +17,11 @@
         </div>
       </div>
 
-      <button type="button" class="cta-btn" (click)="scrollToSection('contact')">{{ ts.t('hero.cta') }}</button>
+      <button type="button" class="cta-btn" (click)="scroll.toSection('contact')">{{ ts.t('hero.cta') }}</button>
     </div>
   </div>
 
-  <!-- 원안과 동일한 오목 대각선 곡선 배경 -->
-  <svg
-    class="hero-curve"
-    viewBox="0 0 1440 420"
-    preserveAspectRatio="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M0,330 C420,370 980,260 1440,0 L1440,420 L0,420 Z"
-      fill="#141d2f"
-    />
-  </svg>
+  <img src="assets/img/shadows/hero-bg.webp" alt="" class="hero-curve" aria-hidden="true" />
 
   <div class="hero-bottom-bar">
     <div class="social-links">
@@ -49,7 +38,7 @@
       <a href="mailto:hello@iamjin.de" class="email-text">hello@iamjin.de</a>
     </div>
 
-    <button type="button" class="scroll-down" aria-label="Scroll down" (click)="scrollToSection('about-me')">
+    <button type="button" class="scroll-down" aria-label="Scroll down" (click)="scroll.toSection('about-me')">
       <span>{{ ts.t('hero.scroll') }}</span>
       <svg width="22" height="24" viewBox="0 0 22 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M11 2v19M3 14l8 8 8-8"/>

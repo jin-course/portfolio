@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TranslationService } from '../../services/translation';
+import { ScrollService } from '../../services/scroll';
 
 @Component({
   selector: 'app-hero',
@@ -10,11 +11,5 @@ import { TranslationService } from '../../services/translation';
 })
 export class Hero {
   ts = inject(TranslationService);
-
-  scrollToSection(sectionId: string): void {
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+  scroll = inject(ScrollService);
 }

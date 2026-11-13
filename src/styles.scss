@@ -1,29 +1,27 @@
-/* 1. Google Fonts - Poppins & Montserrat 불러오기 */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* 2. Style 1 a (Green & Purple 테마) 전역 컬러 변수 */
+/* Colors */
 :root {
-  --bg-dark: #141d2f;          /* rgba(20, 29, 47, 1) */
-  --accent-green: #70e61c;     /* rgba(112, 230, 28, 1) */
-  --accent-purple: #9747ff;    /* rgba(151, 71, 255, 1) */
-  --accent-blue: #1cdae6;      /* rgba(28, 218, 230, 1) */
+  --bg-dark: #141d2f;
+  --accent-green: #70e61c;
+  --accent-purple: #9747ff;
   --error-red: #e61c40;
   --text-white: #ffffff;
   --text-disabled: #b6b6b6;
   --max-content-width: 1440px;
 }
 
-/* 3. 기본 리셋 및 스크롤 설정 */
+/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  background-color: #090d16;
+  font-family: 'Poppins', sans-serif;
+  background-color: #000000;
   color: #ffffff;
   display: flex;
   justify-content: center;
@@ -32,30 +30,15 @@ body {
 app-root {
   display: block;
   width: 100%;
-  max-width: 1440px;
+  max-width: var(--max-content-width);
   min-height: 100vh;
-  background-color: #141d2f;
+  background-color: var(--bg-dark);
   color: #ffffff;
   position: relative;
   overflow-x: hidden;
 }
 
-/* 4. 공통 섹션 컨테이너 (1440px 중앙 정렬) */
-.section-container {
-  max-width: var(--max-content-width);
-  margin: 0 auto;
-  padding: 0 100px;
-
-  @media (max-width: 960px) {
-    padding: 0 32px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 0 16px;
-  }
-}
-
-/* 5. 공통 Primary 버튼 (1. Button - primary) */
+/* Primary button */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -90,38 +73,7 @@ app-root {
   }
 }
 
-/* 6. Contact 폼 공통 입력창 스타일 (21~23. text box v1) */
-.form-field {
-  width: 100%;
-  background-color: var(--bg-dark);
-  border: 1px solid var(--accent-purple);
-  border-radius: 10px;
-  padding: 15px 25px;
-  color: var(--text-white);
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.2s ease;
-
-  &::placeholder {
-    color: var(--text-white);
-  }
-
-  &:hover,
-  &:focus {
-    border-color: var(--accent-green);
-  }
-
-  &.is-invalid {
-    border-color: var(--error-red);
-  }
-
-  &.is-valid {
-    border-color: var(--accent-green);
-  }
-}
-
-/* 7. 브라우저 자동완성 시 다크 배경 깨짐 방지 (체크리스트 필수) */
+/* Keep dark background on browser autofill */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -131,4 +83,27 @@ textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--text-white);
   -webkit-box-shadow: 0 0 0px 1000px var(--bg-dark) inset;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Legal pages (Imprint, Privacy Policy) */
+.legal-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 160px 32px 100px;
+  line-height: 1.6;
+
+  h1 {
+    font-size: clamp(36px, 5vw, 56px);
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-size: 22px;
+    margin: 32px 0 12px;
+    color: var(--accent-green);
+  }
+
+  a {
+    color: var(--accent-purple);
+  }
 }

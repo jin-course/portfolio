@@ -1,6 +1,6 @@
 <section class="contact-section">
   <img
-    src="assets/img/shadows/purple-shadow-footer.png"
+    src="assets/img/shadows/purple-shadow-footer.webp"
     alt=""
     class="bg-shadow"
     aria-hidden="true"
@@ -25,7 +25,7 @@
         <small class="error">{{ ts.t('contact.err.name') }}</small>
       </div>
 
-      <div class="field" [attr.data-state]="state(form.controls.email)">
+      <div class="field email" [attr.data-state]="state(form.controls.email)">
         <input type="email" formControlName="email" [placeholder]="ts.t('contact.email')" autocomplete="email" />
         <img class="status" [src]="state(form.controls.email) === 'invalid' ? 'assets/icons/ui/error.svg' : 'assets/icons/ui/checked-mark.svg'" alt="" />
         <small class="error">{{ ts.t('contact.err.email') }}</small>
@@ -40,18 +40,17 @@
       <div class="privacy" [class.invalid]="state(form.controls.privacy) === 'invalid'">
         <button type="button" class="checkbox" role="checkbox"
                 [attr.aria-checked]="form.controls.privacy.value"
-                (click)="togglePrivacy()">
+                (click)="togglePrivacy()"
+                (blur)="form.controls.privacy.markAsTouched()">
           <img [src]="form.controls.privacy.value ? 'assets/icons/ui/checked-box.svg' : 'assets/icons/ui/check-box.svg'" alt="" />
         </button>
         <span>
           {{ ts.t('contact.privacy.pre') }}
-          <a routerLink="/privacy-policy">{{ ts.t('contact.privacy.link') }}</a>
+          <a routerLink="/privacy-policy" target="_blank">{{ ts.t('contact.privacy.link') }}</a>
           {{ ts.t('contact.privacy.post') }}
         </span>
       </div>
-      @if (state(form.controls.privacy) === 'invalid') {
-        <small class="privacy-error">{{ ts.t('contact.err.privacy') }}</small>
-      }
+      <small class="privacy-error" [class.visible]="state(form.controls.privacy) === 'invalid'">{{ ts.t('contact.err.privacy') }}</small>
 
       <button type="submit" class="btn-primary send" [disabled]="form.invalid">
         {{ ts.t('contact.send') }}
@@ -63,7 +62,7 @@
     </form>
   </div>
 
-  <button type="button" class="scroll-up" aria-label="Scroll up" (click)="scrollToTop()">
+  <button type="button" class="scroll-up" aria-label="Scroll up" (click)="scroll.toTop()">
     <img src="assets/icons/ui/white-circle-arrow.svg" alt="" class="icon-white" />
     <img src="assets/icons/ui/green-circle-arrow.svg" alt="" class="icon-green" />
   </button>

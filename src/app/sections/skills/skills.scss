@@ -11,8 +11,10 @@
 .bg-shadow {
   position: absolute;
   left: 0;
-  bottom: 0;
-  max-width: 50%;
+  bottom: -140px;
+  width: 449px;
+  max-width: 45%;
+  height: auto;
   pointer-events: none;
   z-index: 0;
 }
@@ -62,74 +64,92 @@
   font-weight: 700;
   color: #ffffff;
 
-  img {
+  > img {
     width: 60px;
     height: 60px;
     object-fit: contain;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  /* Plays once per hover and always finishes on its own: up, short hold, back down */
+  &.bounce > img {
+    animation: skill-bounce 0.83s ease-in-out;
   }
 
   &.highlight {
+    position: relative;
     color: #9747ff;
+    cursor: default;
+    outline: none;
+
+    > span {
+      transition: color 0.2s ease;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: #ffffff;
+
+      > img {
+        filter: brightness(0) invert(1);
+      }
+
+      .bubble {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
   }
 }
 
-.skills-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  font-family: 'Poppins', sans-serif;
+.bubble {
+  position: absolute;
+  z-index: 5;
+  left: calc(50% - 43px);
+  bottom: calc(100% - 6px);
+  width: 190px;
+  padding: 12px 14px 10px;
+  background-color: #ffffff;
+  color: #141d2f;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  pointer-events: none;
 
-  @media (max-width: 1050px) {
-    order: 1;
-    align-items: center;
-    text-align: center;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 34px;
+    bottom: -9px;
+    border: 9px solid transparent;
+    border-bottom: 0;
+    border-top-color: #ffffff;
   }
 
-  .title-row {
+  .bubble-icons {
     display: flex;
-    align-items: center;
-    gap: 40px;
-    margin-right: -100px;
-    margin-bottom: 40px;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 26px;
+    margin-top: 8px;
 
-    @media (max-width: 1050px) {
-      margin-right: 0;
+    img {
+      width: auto;
+      height: 44px;
     }
   }
+}
 
-  h2 {
-    font-size: clamp(44px, 6vw, 88px);
-    font-weight: 700;
-    line-height: 1.1;
-  }
-
-  .purple-line {
-    display: block;
-    width: 100px;
-    height: 4px;
-    background-color: #9747ff;
-
-    @media (max-width: 1050px) {
-      display: none;
-    }
-  }
-
-  .intro,
-  .more {
-    max-width: 400px;
-    font-size: 20px;
-    line-height: 1.4;
-  }
-
-  h3 {
-    margin: 44px 0 20px;
-    font-size: clamp(22px, 2.2vw, 32px);
-    font-weight: 600;
-  }
-
-  .btn-primary {
-    margin-top: 40px;
-    height: 58px;
-  }
+@keyframes skill-bounce {
+  0%   { transform: translateY(0); }
+  16%  { transform: translateY(-12px); }
+  84%  { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
 }

@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { TranslationService } from '../../services/translation';
+import { ScrollService } from '../../services/scroll';
 
 interface Skill {
   name: string;
@@ -16,6 +17,10 @@ interface Skill {
 })
 export class Skills {
   ts = inject(TranslationService);
+  scroll = inject(ScrollService);
+
+  /** Name of the icon whose hover animation is currently running (plays to the end, even if the mouse leaves). */
+  bouncing = signal<string | null>(null);
 
   skills: Skill[] = [
     { name: 'HTML', icon: 'assets/icons/skills/html.svg' },
@@ -23,19 +28,25 @@ export class Skills {
     { name: 'JavaScript', icon: 'assets/icons/skills/javascript.svg' },
     { name: 'TypeScript', icon: 'assets/icons/skills/typescript.svg' },
     { name: 'Angular', icon: 'assets/icons/skills/angular.svg' },
+    { name: 'Firebase', icon: 'assets/icons/skills/firebase.svg' },
     { name: 'Supabase', icon: 'assets/icons/skills/supabase.svg' },
     { name: 'Git', icon: 'assets/icons/skills/git.svg' },
-    { name: 'REST-API', icon: 'assets/icons/skills/api.svg' },
-    { name: 'Scrum', icon: 'assets/icons/skills/scrum.svg' },
-    { name: 'Material Design', icon: 'assets/icons/skills/material-design.svg' },
     { name: 'skills.learning', icon: 'assets/icons/skills/continually-learning.svg', highlight: true },
   ];
 
-  label(skill: Skill): string {
-    return skill.highlight ? this.ts.t(skill.name) : skill.name;
+  startBounce(name: string): void {
+    if (this.bouncing() === null) {
+      this.bouncing.set(name);
+      // Safety net in case animationend never fires (e.g. reduced motion / background tab)
+      setTimeout(() => this.endBounce(), 1000);
+    }
   }
 
-  scrollToContact(): void {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  endBounce(): void {
+    this.bouncing.set(null);
+  }
+
+  label(skill: Skill): string {
+    return skill.highlight ? this.ts.t(skill.name) : skill.name;
   }
 }

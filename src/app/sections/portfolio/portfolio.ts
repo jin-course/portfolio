@@ -25,7 +25,7 @@ export class Portfolio {
       title: 'El Pollo Loco',
       techStack: 'JavaScript | HTML | CSS',
       descKey: 'portfolio.pollo.desc',
-      image: 'assets/img/projects/el-pollo-loco.png',
+      image: 'assets/img/projects/el-pollo-loco.webp',
       liveUrl: 'https://jinsoojang-da.github.io/el-pollo-loco/',
       githubUrl: 'https://github.com/JinSooJang-DA/el-pollo-loco'
     },
@@ -33,7 +33,7 @@ export class Portfolio {
       title: 'Pokedex',
       techStack: 'JavaScript | HTML | CSS | REST-API',
       descKey: 'portfolio.pokedex.desc',
-      image: 'assets/img/projects/pokedex.png',
+      image: 'assets/img/projects/pokedex.webp',
       liveUrl: 'https://jinsoojang-da.github.io/pokedex/',
       githubUrl: 'https://github.com/JinSooJang-DA/pokedex'
     },
@@ -41,7 +41,7 @@ export class Portfolio {
       title: 'Koreandiner',
       techStack: 'HTML | CSS | JavaScript',
       descKey: 'portfolio.food order app.desc',
-      image: 'assets/img/projects/koreandiner.png',
+      image: 'assets/img/projects/koreandiner.webp',
       liveUrl: 'https://jinsoojang-da.github.io/koreandiner/',
       githubUrl: 'https://github.com/JinSooJang-DA/koreandiner'
     }

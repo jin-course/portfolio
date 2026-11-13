@@ -1,6 +1,6 @@
 <section class="skills-section">
   <img
-    src="assets/img/shadows/green-shadow-skills.png"
+    src="assets/img/shadows/green-shadow-skills.webp"
     alt=""
     class="bg-shadow"
     aria-hidden="true"
@@ -9,9 +9,25 @@
   <div class="skills-container">
     <ul class="skills-grid">
       @for (skill of skills; track skill.name) {
-        <li class="skill" [class.highlight]="skill.highlight">
+        <li
+          class="skill"
+          [class.highlight]="skill.highlight"
+          [class.bounce]="bouncing() === skill.name"
+          [attr.tabindex]="skill.highlight ? 0 : null"
+          (mouseenter)="startBounce(skill.name)"
+          (animationend)="endBounce()"
+        >
           <img [src]="skill.icon" alt="" />
           <span>{{ label(skill) }}</span>
+          @if (skill.highlight) {
+            <div class="bubble" role="tooltip">
+              <p>{{ ts.t('skills.bubble') }}</p>
+              <div class="bubble-icons">
+                <img src="assets/icons/skills/react-color.svg" alt="React" />
+                <img src="assets/icons/skills/vuejs-color.svg" alt="Vue.js" />
+              </div>
+            </div>
+          }
         </li>
       }
     </ul>
@@ -24,7 +40,7 @@
       <p class="intro">{{ ts.t('skills.intro') }}</p>
       <h3>{{ ts.t('skills.more.title') }}</h3>
       <p class="more">{{ ts.t('skills.more.text') }}</p>
-      <button type="button" class="btn-primary" (click)="scrollToContact()">
+      <button type="button" class="btn-primary" (click)="scroll.toSection('contact')">
         {{ ts.t('skills.cta') }}
       </button>
     </div>

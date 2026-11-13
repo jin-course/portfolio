@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { TranslationService, Lang } from '../../services/translation';
+import { ScrollService } from '../../services/scroll';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ import { TranslationService, Lang } from '../../services/translation';
 export class Header {
   ts = inject(TranslationService);
   private router = inject(Router);
+  private scroll = inject(ScrollService);
   menuOpen = signal(false);
 
   switchLang(lang: Lang): void {
@@ -30,17 +32,10 @@ export class Header {
     this.closeMenu();
     if (this.router.url !== '/') {
       this.router.navigate(['/']).then(() => {
-        setTimeout(() => this.scrollTo(sectionId), 100);
+        setTimeout(() => this.scroll.toSection(sectionId), 100);
       });
     } else {
-      this.scrollTo(sectionId);
-    }
-  }
-
-  private scrollTo(sectionId: string): void {
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      this.scroll.toSection(sectionId);
     }
   }
 }

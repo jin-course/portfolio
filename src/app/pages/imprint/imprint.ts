@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TranslationService } from '../../services/translation';
 
 @Component({
   selector: 'app-imprint',
-  imports: [],
+  standalone: true,
   templateUrl: './imprint.html',
   styleUrl: './imprint.scss',
 })
-export class Imprint {}
+export class Imprint {
+  ts = inject(TranslationService);
+}

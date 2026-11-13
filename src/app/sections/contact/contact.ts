@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TranslationService } from '../../services/translation';
+import { ScrollService } from '../../services/scroll';
 
 @Component({
   selector: 'app-contact',
@@ -12,6 +13,7 @@ import { TranslationService } from '../../services/translation';
 })
 export class Contact {
   ts = inject(TranslationService);
+  scroll = inject(ScrollService);
   private fb = inject(FormBuilder);
 
   sent = false;
@@ -25,7 +27,8 @@ export class Contact {
 
   /** 'invalid' | 'valid' | '' — drives border color + icon like the Figma input states */
   state(ctrl: AbstractControl): string {
-    if (!ctrl.touched && !ctrl.dirty) return '';
+    // Validate on blur (touched), not while the visitor is typing for the first time
+    if (!ctrl.touched) return '';
     return ctrl.invalid ? 'invalid' : 'valid';
   }
 
@@ -37,7 +40,6 @@ export class Contact {
 
   // No backend yet: opens the visitor's mail app with the message prefilled.
   submit(): void {
-    this.form.markAllAsTouched();
     if (this.form.invalid) return;
     const { name, email, message } = this.form.getRawValue();
     const body = `${message}\n\n— ${name} (${email})`;
@@ -45,9 +47,5 @@ export class Contact {
       `mailto:hello@iamjin.de?subject=${encodeURIComponent('Portfolio contact from ' + name)}&body=${encodeURIComponent(body)}`;
     this.sent = true;
     this.form.reset({ name: '', email: '', message: '', privacy: false });
-  }
-
-  scrollToTop(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
