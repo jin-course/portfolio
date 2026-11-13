@@ -44,7 +44,7 @@ export class Contact {
     const { name, email, message } = this.form.getRawValue();
     const body = `${message}\n\n— ${name} (${email})`;
     window.location.href =
-      `mailto:hello@iamjin.de?subject=${encodeURIComponent('Portfolio contact from ' + name)}&body=${encodeURIComponent(body)}`;
+      `mailto:gerkor1972@gmail.com?subject=${encodeURIComponent('Portfolio contact from ' + name)}&body=${encodeURIComponent(body)}`;
     this.sent = true;
     this.submitted = false;
     this.form.reset({ name: '', email: '', message: '', privacy: false });
