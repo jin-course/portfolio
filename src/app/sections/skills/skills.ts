@@ -38,7 +38,7 @@ export class Skills {
     if (this.bouncing() === null) {
       this.bouncing.set(name);
       // Safety net in case animationend never fires (e.g. reduced motion / background tab)
-      setTimeout(() => this.endBounce(), 1000);
+      setTimeout(() => this.endBounce(), 600);
     }
   }
 

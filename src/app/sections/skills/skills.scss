@@ -68,22 +68,22 @@
     width: 60px;
     height: 60px;
     object-fit: contain;
-    transition: transform 0.2s ease, filter 0.2s ease;
+    transition: transform 0.1s ease, filter 0.1s ease;
   }
 
   /* Plays once per hover and always finishes on its own: up, short hold, back down */
   &.bounce > img {
-    animation: skill-bounce 0.83s ease-in-out;
+    animation: skill-bounce 0.42s ease-in-out;
   }
 
   &.highlight {
     position: relative;
-    color: #9747ff;
+    color: var(--color-primary-2);
     cursor: default;
     outline: none;
 
     > span {
-      transition: color 0.2s ease;
+      transition: color 0.1s ease;
     }
 
     &:hover,
@@ -111,7 +111,7 @@
   width: 190px;
   padding: 12px 14px 10px;
   background-color: #ffffff;
-  color: #141d2f;
+  color: var(--color-background);
   border-radius: 14px;
   font-size: 14px;
   font-weight: 500;
@@ -120,7 +120,7 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(6px);
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  transition: opacity 0.12s ease, transform 0.12s ease, visibility 0.12s;
   pointer-events: none;
 
   &::after {

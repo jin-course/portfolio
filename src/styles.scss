@@ -2,10 +2,17 @@
 
 /* Colors */
 :root {
-  --bg-dark: #141d2f;
-  --accent-green: #70e61c;
-  --accent-purple: #9747ff;
-  --error-red: #e61c40;
+  /* ---------- Colour palette: change the colours here only ---------- */
+  --color-background: #141d2f;
+  --color-primary-1: #70e61c;  /* green  */
+  --color-primary-2: #9747ff;  /* purple */
+  --color-secondary: #1cdae6;  /* cyan   */
+
+  /* Alternative palettes from the design (swap them in above)
+     Version 2:  primary-1 #4b47ff (blue)   primary-2 #00bee8 (cyan)   secondary #1ce6b5 (mint)
+     Version 3:  primary-1 #ff4747 (red)    primary-2 #fa7902 (orange) secondary #d61ce6 (magenta) */
+
+  --color-error: #e61c40;
   --text-white: #ffffff;
   --text-disabled: #b6b6b6;
   --max-content-width: 1440px;
@@ -32,7 +39,7 @@ app-root {
   width: 100%;
   max-width: var(--max-content-width);
   min-height: 100vh;
-  background-color: var(--bg-dark);
+  background-color: var(--color-background);
   color: #ffffff;
   position: relative;
   overflow-x: hidden;
@@ -47,7 +54,7 @@ app-root {
   padding: 15px 30px;
   border-radius: 10px;
   border: none;
-  background-color: var(--accent-green);
+  background-color: var(--color-primary-1);
   color: var(--text-white);
   font-family: 'Poppins', sans-serif;
   font-size: 23px;
@@ -56,7 +63,7 @@ app-root {
   transition: transform 0.15s ease, background-color 0.15s ease;
 
   &:hover:not(:disabled) {
-    background-color: var(--accent-purple);
+    background-color: var(--color-primary-2);
     transform: scale(1.05);
   }
 
@@ -81,7 +88,7 @@ textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--text-white);
-  -webkit-box-shadow: 0 0 0px 1000px var(--bg-dark) inset;
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-background) inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -100,10 +107,10 @@ textarea:-webkit-autofill:focus {
   h2 {
     font-size: 22px;
     margin: 32px 0 12px;
-    color: var(--accent-green);
+    color: var(--color-primary-1);
   }
 
   a {
-    color: var(--accent-purple);
+    color: var(--color-primary-2);
   }
 }

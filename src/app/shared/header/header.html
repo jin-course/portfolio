@@ -1,7 +1,7 @@
 <header class="site-header">
   <div class="header-inner">
     <a routerLink="/" class="logo" (click)="goHome()">
-      J<span class="accent-green">i</span>n<span class="accent-purple">.</span>
+      J<span class="color-primary-1">i</span>n<span class="color-primary-2">.</span>
     </a>
 
     <nav class="desktop-nav">
@@ -13,6 +13,9 @@
       </button>
       <button type="button" class="nav-link" (click)="navigateToSection('portfolio')">
         {{ ts.t('nav.portfolio') }}
+      </button>
+      <button type="button" class="nav-link" (click)="navigateToSection('contact')">
+        {{ ts.t('nav.contact') }}
       </button>
 
       <div class="lang-switch">
@@ -58,6 +61,9 @@
       </button>
       <button type="button" class="mobile-link" (click)="navigateToSection('portfolio')">
         {{ ts.t('nav.portfolio') }}
+      </button>
+      <button type="button" class="mobile-link" (click)="navigateToSection('contact')">
+        {{ ts.t('nav.contact') }}
       </button>
 
       <div class="lang-switch mobile-lang">

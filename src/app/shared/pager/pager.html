@@ -1,0 +1,16 @@
+@if (visible()) {
+  <nav class="pager" aria-label="Page navigation">
+    @if (!onHero()) {
+      <button type="button" class="pager-btn up" aria-label="Previous page" (click)="previous()">
+        <img src="assets/icons/ui/white-circle-arrow.svg" alt="" class="icon-white" />
+        <img src="assets/icons/ui/green-circle-arrow.svg" alt="" class="icon-green" />
+      </button>
+    }
+    @if (!atEnd()) {
+      <button type="button" class="pager-btn down" aria-label="Next page" (click)="next()">
+        <img src="assets/icons/ui/white-circle-arrow.svg" alt="" class="icon-white" />
+        <img src="assets/icons/ui/green-circle-arrow.svg" alt="" class="icon-green" />
+      </button>
+    }
+  </nav>
+}

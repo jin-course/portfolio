@@ -1,0 +1,30 @@
+@if (legal.open(); as page) {
+  <div class="backdrop">
+    <div class="dialog" role="dialog" aria-modal="true">
+      <button type="button" class="close-btn" aria-label="Close" (click)="legal.close()">
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="content" #content>
+        @if (page === 'imprint') {
+          <app-imprint />
+        } @else {
+          <app-privacy-policy />
+        }
+      </div>
+
+      <!-- up/down arrows inside the modal -->
+      <div class="arrows">
+        <button type="button" class="arrow-btn" aria-label="Scroll up" (click)="scroll(-1)">
+          <img src="assets/icons/ui/white-circle-arrow.svg" alt="" class="icon-white" />
+          <img src="assets/icons/ui/green-circle-arrow.svg" alt="" class="icon-green" />
+        </button>
+        <button type="button" class="arrow-btn down" aria-label="Scroll down" (click)="scroll(1)">
+          <img src="assets/icons/ui/white-circle-arrow.svg" alt="" class="icon-white" />
+          <img src="assets/icons/ui/green-circle-arrow.svg" alt="" class="icon-green" />
+        </button>
+      </div>
+    </div>
+  </div>
+}

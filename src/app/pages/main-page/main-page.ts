@@ -5,6 +5,7 @@ import { Skills } from '../../sections/skills/skills';
 import { Portfolio } from '../../sections/portfolio/portfolio';
 import { Testimonials } from '../../sections/testimonials/testimonials';
 import { Contact } from '../../sections/contact/contact';
+import { Pager } from '../../shared/pager/pager';
 
 @Component({
   selector: 'app-main-page',
@@ -15,7 +16,8 @@ import { Contact } from '../../sections/contact/contact';
     Skills,
     Portfolio,
     Testimonials,
-    Contact
+    Contact,
+    Pager
   ],
   templateUrl: './main-page.html',
   styleUrl: './main-page.scss'

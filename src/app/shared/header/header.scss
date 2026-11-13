@@ -7,7 +7,7 @@
   width: 100%;
   max-width: var(--max-content-width);
   height: 109px;
-  background-color: var(--bg-dark);
+  background-color: var(--color-background);
   z-index: 1000;
 }
 
@@ -15,7 +15,7 @@
   max-width: var(--max-content-width);
   height: 100%;
   margin: 0 auto;
-  padding: 0 100px;
+  padding: 0 75px 0 100px; // Figma: logo 100px from the left, language switch 75px from the right
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,12 +36,12 @@
   text-decoration: none;
   letter-spacing: 1px;
 
-  .accent-green {
-    color: var(--accent-green);
+  .color-primary-1 {
+    color: var(--color-primary-1);
   }
 
-  .accent-purple {
-    color: var(--accent-purple);
+  .color-primary-2 {
+    color: var(--color-primary-2);
   }
 }
 
@@ -74,13 +74,13 @@
     bottom: -2px;
     width: 0;
     height: 3px;
-    background-color: var(--accent-purple);
+    background-color: var(--color-primary-2);
     border-radius: 2px;
     transition: width 0.2s ease;
   }
 
   &:hover {
-    color: var(--accent-green);
+    color: var(--color-primary-1);
 
     &::after {
       width: 55%;
@@ -95,9 +95,16 @@
   margin-left: 12px;
 }
 
+// Figma: ~100px between "Portfolio" and the DE/EN switch on desktop
+@media (min-width: 1100px) {
+  .desktop-nav .lang-switch {
+    margin-left: 72px;
+  }
+}
+
 .lang-btn {
   background: transparent;
-  border: 1px solid var(--accent-green);
+  border: 1px solid var(--color-primary-1);
   border-radius: 10px;
   color: var(--text-white);
   font-family: 'Poppins', sans-serif;
@@ -108,12 +115,12 @@
   transition: all 0.15s ease;
 
   &:hover {
-    border-color: var(--accent-purple);
+    border-color: var(--color-primary-2);
   }
 
   &.active {
-    background-color: var(--accent-green);
-    border-color: var(--accent-green);
+    background-color: var(--color-primary-1);
+    border-color: var(--color-primary-1);
     color: var(--text-white);
   }
 }
@@ -164,7 +171,7 @@
   width: 100%;
   max-width: var(--max-content-width);
   height: calc(100vh - 109px);
-  background-color: rgba(20, 29, 47, 0.96);
+  background-color: color-mix(in srgb, var(--color-background) 96%, transparent);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -181,7 +188,7 @@
     cursor: pointer;
 
     &:hover {
-      color: var(--accent-green);
+      color: var(--color-primary-1);
     }
   }
 
