@@ -257,3 +257,19 @@
     }
   }
 }
+
+// Widescreen: background spans the whole screen, content stays 1440px wide
+.hero-section {
+  padding-inline: var(--side-gap);
+}
+
+// the purple line starts at the screen edge
+.hero-bottom-bar .social-links .purple-line {
+  width: calc(100px + var(--side-gap));
+  margin-left: calc(-1 * var(--side-gap));
+
+  @media (max-width: 768px) {
+    width: 40px;
+    margin-left: 0;
+  }
+}

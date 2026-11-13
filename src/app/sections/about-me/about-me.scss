@@ -6,7 +6,7 @@
   padding: 109px 0 80px;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow-x: clip; // background shadow is not cut at the top/bottom of the section
 
   @media (max-width: 1050px) {
     padding: 140px 0 80px;
@@ -163,4 +163,14 @@
       display: none;
     }
   }
+}
+
+// Widescreen: background spans the whole screen, content stays 1440px wide
+.about-section {
+  padding-inline: var(--side-gap);
+}
+
+// the green line runs to the screen edge
+.about-visual .green-line {
+  margin-right: calc(-1 * var(--side-gap));
 }

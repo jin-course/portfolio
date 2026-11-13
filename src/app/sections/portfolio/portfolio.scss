@@ -1,8 +1,8 @@
 .portfolio-section {
   position: relative;
   width: 100%;
-  padding: 120px 0 100px;
-  overflow: hidden;
+  padding: 120px 0 60px;
+  overflow-x: clip; // background shadow is not cut at the top/bottom of the section
 }
 
 .bg-shadow {
@@ -188,4 +188,9 @@
       background-color: var(--color-primary-1);
     }
   }
+}
+
+// Widescreen: background spans the whole screen, content stays 1440px wide
+.portfolio-section {
+  padding-inline: var(--side-gap);
 }

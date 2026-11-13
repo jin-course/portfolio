@@ -40,24 +40,46 @@ export class Pager implements OnInit {
     window.scrollTo({ top: target ?? 0, behavior: 'smooth' });
   }
 
-  /** Scroll position of every "page": each section, and each project card on its own. */
+  /**
+   * Scroll position of every stop of the arrows:
+   * hero, about, skills, portfolio (title + first project), the projects in between,
+   * last project together with the testimonials, contact, footer.
+   */
   private positions(): number[] {
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    const pages: { el: Element; center: boolean }[] = [
-      ...['hero', 'about-me', 'skills', 'portfolio'].map((id) => ({ el: document.getElementById(id)!, center: false })),
-      // the first project is already shown with the "Portfolio" title (same position as the header link)
-      ...Array.from(document.querySelectorAll('.project-card')).slice(1).map((el) => ({ el, center: true })),
-      ...['testimonials', 'contact'].map((id) => ({ el: document.getElementById(id)!, center: false })),
-    ];
+    const header = 109;
+    const screen = window.innerHeight;
+    const maxScroll = document.documentElement.scrollHeight - screen;
+    const top = (el: Element) => el.getBoundingClientRect().top + window.scrollY;
+    const bottom = (el: Element) => el.getBoundingClientRect().bottom + window.scrollY;
+    // puts an element in the middle of the area below the header
+    const centered = (el: Element) =>
+      top(el) - header - Math.max(0, (screen - header - el.getBoundingClientRect().height) / 2);
 
-    const sections = pages
-      .filter((page) => page.el)
-      .map(({ el, center }) => {
-        const top = el.getBoundingClientRect().top + window.scrollY;
-        const y = center ? top - (window.innerHeight - el.getBoundingClientRect().height) / 2 : top;
-        return Math.round(Math.min(Math.max(y, 0), maxScroll));
-      });
-    // the footer is the last stop: the very bottom of the page
-    return [...sections, Math.round(maxScroll)];
+    const stops: number[] = [];
+    for (const id of ['hero', 'about-me', 'skills', 'portfolio']) {
+      const section = document.getElementById(id);
+      if (section) stops.push(top(section));
+    }
+
+    const cards = Array.from(document.querySelectorAll('.project-card'));
+    const lastCard = cards[cards.length - 1];
+    const testimonials = document.getElementById('testimonials');
+
+    // projects between the first (shown with the "Portfolio" title) and the last one
+    cards.slice(1, -1).forEach((card) => stops.push(centered(card)));
+
+    if (lastCard && testimonials) {
+      // if the last project and the testimonials do not fit on one screen, the project gets its own stop
+      const fitsTogether = bottom(testimonials) - top(lastCard) <= screen - header;
+      if (!fitsTogether && cards.length > 1) stops.push(centered(lastCard));
+      // testimonials at the bottom of the screen, the last project above them
+      stops.push(bottom(testimonials) - screen);
+    }
+
+    const contact = document.getElementById('contact');
+    if (contact) stops.push(top(contact));
+    stops.push(maxScroll); // footer
+
+    return stops.map((y) => Math.round(Math.min(Math.max(y, 0), maxScroll)));
   }
 }

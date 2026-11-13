@@ -5,7 +5,7 @@
   padding: 109px 0 80px;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow-x: clip; // background shadow is not cut at the top/bottom of the section
 }
 
 .bg-shadow {
@@ -25,12 +25,13 @@
   width: 100%;
   padding: 0 100px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  // minmax(0, …) lets both columns shrink with the window instead of pushing the text off screen
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   align-items: center;
   gap: 40px;
 
   @media (max-width: 1050px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     padding: 0 32px;
   }
 }
@@ -38,7 +39,7 @@
 .skills-grid {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, 176px);
+  grid-template-columns: repeat(4, minmax(0, 176px));
   row-gap: 40px;
   padding-left: 12px;
 
@@ -48,8 +49,10 @@
     padding-left: 0;
   }
 
+  // phones: smaller icons, three per row (like the Figma mobile frame)
   @media (max-width: 760px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 28px;
   }
 }
 
@@ -71,9 +74,19 @@
     transition: transform 0.1s ease, filter 0.1s ease;
   }
 
-  /* Plays once per hover and always finishes on its own: up, short hold, back down */
+  @media (max-width: 760px) {
+    gap: 10px;
+    font-size: 14px;
+
+    > img {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  /* Plays once per hover and always finishes on its own: quick up, smooth down */
   &.bounce > img {
-    animation: skill-bounce 0.42s ease-in-out;
+    animation: skill-bounce 0.6s;
   }
 
   &.highlight {
@@ -148,8 +161,77 @@
 }
 
 @keyframes skill-bounce {
-  0%   { transform: translateY(0); }
-  16%  { transform: translateY(-12px); }
-  84%  { transform: translateY(-12px); }
+  // quick up ...
+  0%   { transform: translateY(0); animation-timing-function: ease-out; }
+  20%  { transform: translateY(-12px); animation-timing-function: ease-in-out; }
+  // ... and a smooth, slower way down
   100% { transform: translateY(0); }
+}
+
+// Widescreen: background spans the whole screen, content stays 1440px wide
+.skills-section {
+  padding-inline: var(--side-gap);
+}
+
+// Right column: title with purple line, texts and button (right-aligned like the Figma frame)
+.skills-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+
+  .title-row {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+    // the purple line runs from the title to the screen edge
+    margin-right: calc(-100px - var(--side-gap));
+    margin-bottom: 40px;
+
+    h2 {
+      font-size: clamp(42px, 6.25vw, 90px);
+      font-weight: 700;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .purple-line {
+      flex: 0 0 calc(68px + var(--side-gap));
+      height: 4px;
+      background-color: var(--color-primary-2);
+    }
+  }
+
+  .intro,
+  .more {
+    max-width: 400px;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  h3 {
+    margin: 32px 0 16px;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .btn-primary {
+    margin-top: 40px;
+  }
+
+  @media (max-width: 1050px) {
+    align-items: center;
+    text-align: center;
+
+    .title-row {
+      justify-content: center;
+      margin-right: 0;
+
+      .purple-line {
+        display: none;
+      }
+    }
+  }
 }

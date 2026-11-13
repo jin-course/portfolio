@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, HostListener, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { TranslationService, Lang } from '../../services/translation';
 import { ScrollService } from '../../services/scroll';
@@ -15,6 +15,20 @@ export class Header {
   private router = inject(Router);
   private scroll = inject(ScrollService);
   menuOpen = signal(false);
+
+  /** Section the visitor is currently looking at (its menu link is highlighted). */
+  activeSection = signal<string | null>(null);
+
+  @HostListener('window:scroll')
+  updateActiveSection(): void {
+    const marker = window.innerHeight * 0.4; // a section counts as active once it reaches the upper part of the screen
+    let active: string | null = null;
+    for (const id of ['about-me', 'skills', 'portfolio', 'testimonials', 'contact']) {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= marker) active = id;
+    }
+    this.activeSection.set(active);
+  }
 
   switchLang(lang: Lang): void {
     this.ts.setLang(lang);

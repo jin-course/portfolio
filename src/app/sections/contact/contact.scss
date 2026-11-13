@@ -1,9 +1,9 @@
 .contact-section {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: min(100vh, 900px); // one screen, but no huge gap on very tall screens
   padding: 109px 0 24px; // whole section, incl. the Send button, fits on one screen
-  overflow: hidden;
+  overflow-x: clip; // background shadow is not cut at the top/bottom of the section
   font-family: 'Poppins', sans-serif;
 }
 
@@ -213,7 +213,8 @@
 // Phones / small tablets: compact layout so the whole section (incl. Send) fits on one screen
 @media (max-width: 960px) {
   .contact-section {
-    padding-bottom: 16px;
+    min-height: 0; // only as tall as its content: no empty space before the footer
+    padding-bottom: 40px;
   }
 
   .title-row h2 {
@@ -278,5 +279,18 @@
     height: 48px;
     margin-top: 4px;
     font-size: 18px;
+  }
+}
+
+// Widescreen: background spans the whole screen, content stays 1440px wide
+.contact-section {
+  padding-inline: var(--side-gap);
+}
+
+// the purple line starts at the screen edge
+@media (min-width: 961px) {
+  .title-row .purple-line {
+    flex-basis: calc(min(540px, 37%) + var(--side-gap));
+    margin-left: calc(-1 * var(--side-gap));
   }
 }

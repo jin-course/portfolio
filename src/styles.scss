@@ -16,6 +16,10 @@
   --text-white: #ffffff;
   --text-disabled: #b6b6b6;
   --max-content-width: 1440px;
+
+  /* Widescreen (> 1440px): free space on each side of the 1440px content area.
+     Sections use it as side padding; lines that touch the screen edge grow by it. */
+  --side-gap: max(0px, calc((100vw - var(--max-content-width)) / 2));
 }
 
 /* Reset */
@@ -28,16 +32,13 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #000000;
+  background-color: var(--color-background);
   color: #ffffff;
-  display: flex;
-  justify-content: center;
 }
 
 app-root {
   display: block;
   width: 100%;
-  max-width: var(--max-content-width);
   min-height: 100vh;
   background-color: var(--color-background);
   color: #ffffff;

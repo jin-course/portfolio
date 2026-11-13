@@ -5,6 +5,7 @@
 }
 
 .footer-inner {
+  margin: 0 var(--side-gap); // same content area as the sections
   padding: 80px 100px 90px;
   display: flex;
   align-items: center;
@@ -53,25 +54,9 @@
   text-decoration: none;
   transition: color 0.15s ease;
 
-  // same hover effect as the header menu: green text and a short purple underline
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 3px;
-    background-color: var(--color-primary-2);
-    border-radius: 2px;
-    transition: width 0.2s ease;
-  }
-
+  // same hover effect as the header menu: green text
   &:hover {
     color: var(--color-primary-1);
-
-    &::after {
-      width: 55%;
-    }
   }
 }
 

@@ -5,16 +5,16 @@
     </a>
 
     <nav class="desktop-nav">
-      <button type="button" class="nav-link" (click)="navigateToSection('about-me')">
+      <button type="button" class="nav-link" [class.active]="activeSection() === 'about-me'" (click)="navigateToSection('about-me')">
         {{ ts.t('nav.about') }}
       </button>
-      <button type="button" class="nav-link" (click)="navigateToSection('skills')">
+      <button type="button" class="nav-link" [class.active]="activeSection() === 'skills'" (click)="navigateToSection('skills')">
         {{ ts.t('nav.skills') }}
       </button>
-      <button type="button" class="nav-link" (click)="navigateToSection('portfolio')">
+      <button type="button" class="nav-link" [class.active]="activeSection() === 'portfolio'" (click)="navigateToSection('portfolio')">
         {{ ts.t('nav.portfolio') }}
       </button>
-      <button type="button" class="nav-link" (click)="navigateToSection('contact')">
+      <button type="button" class="nav-link" [class.active]="activeSection() === 'contact'" (click)="navigateToSection('contact')">
         {{ ts.t('nav.contact') }}
       </button>
 
@@ -53,16 +53,16 @@
 
   @if (menuOpen()) {
     <div class="mobile-overlay">
-      <button type="button" class="mobile-link" (click)="navigateToSection('about-me')">
+      <button type="button" class="mobile-link" [class.active]="activeSection() === 'about-me'" (click)="navigateToSection('about-me')">
         {{ ts.t('nav.about') }}
       </button>
-      <button type="button" class="mobile-link" (click)="navigateToSection('skills')">
+      <button type="button" class="mobile-link" [class.active]="activeSection() === 'skills'" (click)="navigateToSection('skills')">
         {{ ts.t('nav.skills') }}
       </button>
-      <button type="button" class="mobile-link" (click)="navigateToSection('portfolio')">
+      <button type="button" class="mobile-link" [class.active]="activeSection() === 'portfolio'" (click)="navigateToSection('portfolio')">
         {{ ts.t('nav.portfolio') }}
       </button>
-      <button type="button" class="mobile-link" (click)="navigateToSection('contact')">
+      <button type="button" class="mobile-link" [class.active]="activeSection() === 'contact'" (click)="navigateToSection('contact')">
         {{ ts.t('nav.contact') }}
       </button>
 

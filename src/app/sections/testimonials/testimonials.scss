@@ -1,11 +1,8 @@
 .testimonials-section {
   position: relative;
   width: 100%;
-  // one full screen below the 109px fixed header, content centred (nothing of the next section peeks in)
-  min-height: 100vh;
-  padding: 109px 0 80px;
-  display: flex;
-  align-items: center;
+  // compact: the page arrows show this section together with the last project above it
+  padding: 32px 0 56px;
   overflow: hidden;
 }
 
@@ -186,4 +183,15 @@
       }
     }
   }
+}
+
+// Widescreen: background spans the whole screen, content stays 1440px wide
+.testimonials-section {
+  padding-inline: var(--side-gap);
+}
+
+// the green line runs to the screen edge
+.avatar-wrapper .green-connector {
+  width: calc(100px + var(--side-gap));
+  margin-right: calc(-1 * var(--side-gap));
 }
