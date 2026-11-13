@@ -38,4 +38,15 @@ export class Header {
       this.scroll.toSection(sectionId);
     }
   }
+
+  goHome(): void {
+    this.closeMenu();
+    if (this.router.url === '/' || this.router.url.startsWith('/#')) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      this.router.navigate(['/']).then(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  }
 }
