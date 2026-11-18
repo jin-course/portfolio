@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { TranslationService } from '../../services/translation';
 import { LegalService } from '../../services/legal';
@@ -15,8 +15,13 @@ export class Contact {
   legal = inject(LegalService);
   private fb = inject(FormBuilder);
 
-  sent = false;
-  /** Validation messages only appear after the visitor has clicked Send. */
+  // Get your free access key at https://web3forms.com/ using gerkor1972@gmail.com
+  private readonly web3FormsKey = '7f0dea81-3001-4697-83ec-32a909fd6ce0';
+
+  sending = signal(false);
+  sent = signal(false);
+  sendError = signal(false);
+  /** Validation messages appear after a field loses focus (touched) or on submit. */
   submitted = false;
 
   form = this.fb.nonNullable.group({
@@ -28,25 +33,48 @@ export class Contact {
 
   /** 'invalid' | 'valid' | '' — drives border color + icon like the Figma input states */
   state(ctrl: AbstractControl): string {
-    if (!this.submitted) return '';
+    if (!ctrl.touched && !this.submitted) return '';
     return ctrl.invalid ? 'invalid' : 'valid';
   }
 
   togglePrivacy(): void {
     const c = this.form.controls.privacy;
     c.setValue(!c.value);
+    c.markAsTouched();
   }
 
-  // No backend yet: opens the visitor's mail app with the message prefilled.
-  submit(): void {
+  async submit(): Promise<void> {
     this.submitted = true;
-    if (this.form.invalid) return;
+    this.sent.set(false);
+    this.sendError.set(false);
+    if (this.form.invalid || this.sending()) return;
+
+    this.sending.set(true);
     const { name, email, message } = this.form.getRawValue();
-    const body = `${message}\n\n— ${name} (${email})`;
-    window.location.href =
-      `mailto:gerkor1972@gmail.com?subject=${encodeURIComponent('Portfolio contact from ' + name)}&body=${encodeURIComponent(body)}`;
-    this.sent = true;
-    this.submitted = false;
-    this.form.reset({ name: '', email: '', message: '', privacy: false });
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: this.web3FormsKey,
+          name,
+          email,
+          message,
+          subject: `Portfolio contact from ${name}`,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || 'Failed to send message');
+      }
+      this.sent.set(true);
+      this.submitted = false;
+      this.form.reset({ name: '', email: '', message: '', privacy: false });
+    } catch {
+      this.sendError.set(true);
+    } finally {
+      this.sending.set(false);
+    }
   }
 }

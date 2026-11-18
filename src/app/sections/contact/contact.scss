@@ -205,6 +205,11 @@
   color: var(--color-primary-1);
 }
 
+.send-error {
+  text-align: center;
+  color: var(--color-error);
+}
+
 // Leave room for browser extensions (e.g. temp-mail buttons) that sit inside the email input
 .field.email .status {
   right: 64px;

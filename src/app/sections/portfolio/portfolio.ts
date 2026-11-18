@@ -40,7 +40,7 @@ export class Portfolio {
     {
       title: 'Koreandiner',
       techStack: 'HTML | CSS | JavaScript',
-      descKey: 'portfolio.food order app.desc',
+      descKey: 'portfolio.koreandiner.desc',
       image: 'assets/img/projects/koreandiner.webp',
       liveUrl: 'https://jinsoojang-da.github.io/koreandiner/',
       githubUrl: 'https://github.com/JinSooJang-DA/koreandiner'

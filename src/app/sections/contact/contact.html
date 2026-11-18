@@ -51,12 +51,15 @@
       </div>
       <small class="privacy-error" [class.visible]="state(form.controls.privacy) === 'invalid'">{{ ts.t('contact.err.privacy') }}</small>
 
-      <button type="submit" class="btn-primary send">
-        {{ ts.t('contact.send') }}
+      <button type="submit" class="btn-primary send" [disabled]="form.invalid || sending()">
+        {{ sending() ? ts.t('contact.sending') : ts.t('contact.send') }}
       </button>
 
-      @if (sent) {
+      @if (sent()) {
         <p class="sent">{{ ts.t('contact.sent') }}</p>
+      }
+      @if (sendError()) {
+        <p class="send-error">{{ ts.t('contact.err.send') }}</p>
       }
     </form>
   </div>
