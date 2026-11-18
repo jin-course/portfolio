@@ -19,8 +19,9 @@ export class Skills {
   ts = inject(TranslationService);
   scroll = inject(ScrollService);
 
-  /** Name of the icon whose hover animation is currently running (plays to the end, even if the mouse leaves). */
-  bouncing = signal<string | null>(null);
+  /** Names of icons whose hover animation is currently running (each plays independently). */
+  bouncing = signal<Set<string>>(new Set());
+  private bounceTimers = new Map<string, ReturnType<typeof setTimeout>>();
 
   skills: Skill[] = [
     { name: 'HTML', icon: 'assets/icons/skills/html.svg' },
@@ -34,16 +35,42 @@ export class Skills {
     { name: 'skills.learning', icon: 'assets/icons/skills/continually-learning.svg', highlight: true },
   ];
 
-  startBounce(name: string): void {
-    if (this.bouncing() === null) {
-      this.bouncing.set(name);
-      // Safety net in case animationend never fires (e.g. reduced motion / background tab)
-      setTimeout(() => this.endBounce(), 800);
-    }
+  isBouncing(name: string): boolean {
+    return this.bouncing().has(name);
   }
 
-  endBounce(): void {
-    this.bouncing.set(null);
+  startBounce(name: string): void {
+    if (this.bouncing().has(name)) return;
+
+    this.bouncing.update((set) => {
+      const next = new Set(set);
+      next.add(name);
+      return next;
+    });
+
+    const prevTimer = this.bounceTimers.get(name);
+    if (prevTimer) clearTimeout(prevTimer);
+
+    // Safety net in case animationend never fires (e.g. reduced motion / background tab)
+    this.bounceTimers.set(
+      name,
+      setTimeout(() => this.endBounce(name), 600),
+    );
+  }
+
+  endBounce(name: string): void {
+    const timer = this.bounceTimers.get(name);
+    if (timer) {
+      clearTimeout(timer);
+      this.bounceTimers.delete(name);
+    }
+
+    if (!this.bouncing().has(name)) return;
+    this.bouncing.update((set) => {
+      const next = new Set(set);
+      next.delete(name);
+      return next;
+    });
   }
 
   label(skill: Skill): string {

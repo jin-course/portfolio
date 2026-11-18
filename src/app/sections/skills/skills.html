@@ -12,10 +12,10 @@
         <li
           class="skill"
           [class.highlight]="skill.highlight"
-          [class.bounce]="bouncing() === skill.name"
+          [class.bounce]="isBouncing(skill.name)"
           [attr.tabindex]="skill.highlight ? 0 : null"
           (mouseenter)="startBounce(skill.name)"
-          (animationend)="endBounce()"
+          (animationend)="endBounce(skill.name)"
         >
           <img [src]="skill.icon" alt="" />
           <span>{{ label(skill) }}</span>
