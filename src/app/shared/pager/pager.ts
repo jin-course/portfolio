@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit, signal } from '@angular/core';
 
-/** Round up/down arrows (bottom right) that jump from page to page. On the landing page only phones show it (down arrow). */
+/** Round up/down arrows (bottom right) that jump from page to page. Desktop only; hidden on the landing page. At the end of the page the up arrow scrolls straight to the top. */
 @Component({
   selector: 'app-pager',
   standalone: true,
@@ -23,10 +23,7 @@ export class Pager implements OnInit {
     const onHero = window.scrollY <= window.innerHeight * 0.5;
     const isPhone = window.innerWidth <= 768;
     this.onHero.set(onHero);
-    // on phones the arrows only help above the Portfolio section; from there on the page is short enough
-    const portfolioTop = document.getElementById('portfolio')?.getBoundingClientRect().top ?? Infinity;
-    const inLowerPart = portfolioTop <= window.innerHeight * 0.5;
-    this.visible.set(isPhone ? !inLowerPart : !onHero);
+    this.visible.set(!isPhone && !onHero);
     this.atEnd.set(!positions.some((y) => y > window.scrollY + 5));
   }
 
@@ -36,6 +33,10 @@ export class Pager implements OnInit {
   }
 
   previous(): void {
+    if (this.atEnd()) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     const target = this.positions().filter((y) => y < window.scrollY - 5).pop();
     window.scrollTo({ top: target ?? 0, behavior: 'smooth' });
   }

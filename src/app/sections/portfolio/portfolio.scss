@@ -188,6 +188,17 @@
       background-color: var(--color-primary-1);
     }
   }
+
+  // very small phones (320px - 380px): smaller buttons so they stay in one row
+  @media (max-width: 380px) {
+    gap: 16px;
+
+    a {
+      height: 48px;
+      padding: 0 20px;
+      font-size: 16px;
+    }
+  }
 }
 
 // Widescreen: background spans the whole screen, content stays 1440px wide

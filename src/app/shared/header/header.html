@@ -19,22 +19,16 @@
       </button>
 
       <div class="lang-switch">
-        <button
-          type="button"
-          class="lang-btn"
-          [class.active]="ts.currentLang() === 'de'"
-          (click)="switchLang('de')"
-        >
-          DE
-        </button>
-        <button
-          type="button"
-          class="lang-btn"
-          [class.active]="ts.currentLang() === 'en'"
-          (click)="switchLang('en')"
-        >
-          EN
-        </button>
+        @for (lang of languages; track lang) {
+          <button
+            type="button"
+            class="lang-btn"
+            [class.active]="ts.currentLang() === lang"
+            (click)="switchLang(lang)"
+          >
+            {{ lang.toUpperCase() }}
+          </button>
+        }
       </div>
     </nav>
 
@@ -67,22 +61,16 @@
       </button>
 
       <div class="lang-switch mobile-lang">
-        <button
-          type="button"
-          class="lang-btn"
-          [class.active]="ts.currentLang() === 'de'"
-          (click)="switchLang('de')"
-        >
-          DE
-        </button>
-        <button
-          type="button"
-          class="lang-btn"
-          [class.active]="ts.currentLang() === 'en'"
-          (click)="switchLang('en')"
-        >
-          EN
-        </button>
+        @for (lang of languages; track lang) {
+          <button
+            type="button"
+            class="lang-btn"
+            [class.active]="ts.currentLang() === lang"
+            (click)="switchLang(lang)"
+          >
+            {{ lang.toUpperCase() }}
+          </button>
+        }
       </div>
     </div>
   }

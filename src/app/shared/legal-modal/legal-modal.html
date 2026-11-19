@@ -15,16 +15,18 @@
       </div>
 
       <!-- up/down arrows inside the modal -->
-      <div class="arrows">
-        <button type="button" class="arrow-btn" aria-label="Scroll up" (click)="scroll(-1)">
-          <img src="assets/icons/ui/white-circle-arrow.svg" alt="" class="icon-white" />
-          <img src="assets/icons/ui/green-circle-arrow.svg" alt="" class="icon-green" />
-        </button>
-        <button type="button" class="arrow-btn down" aria-label="Scroll down" (click)="scroll(1)">
-          <img src="assets/icons/ui/white-circle-arrow.svg" alt="" class="icon-white" />
-          <img src="assets/icons/ui/green-circle-arrow.svg" alt="" class="icon-green" />
-        </button>
-      </div>
+      @if (scrollable()) {
+        <div class="arrows">
+          <button type="button" class="arrow-btn" aria-label="Scroll up" (click)="scroll(-1)">
+            <img src="assets/icons/ui/white-circle-arrow.svg" alt="" class="icon-white" />
+            <img src="assets/icons/ui/green-circle-arrow.svg" alt="" class="icon-green" />
+          </button>
+          <button type="button" class="arrow-btn down" aria-label="Scroll down" (click)="scroll(1)">
+            <img src="assets/icons/ui/white-circle-arrow.svg" alt="" class="icon-white" />
+            <img src="assets/icons/ui/green-circle-arrow.svg" alt="" class="icon-green" />
+          </button>
+        </div>
+      }
     </div>
   </div>
 }

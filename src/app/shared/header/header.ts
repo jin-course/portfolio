@@ -30,6 +30,8 @@ export class Header {
     this.activeSection.set(active);
   }
 
+  languages: Lang[] = ['de', 'en', 'ko'];
+
   switchLang(lang: Lang): void {
     this.ts.setLang(lang);
   }

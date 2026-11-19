@@ -26,7 +26,7 @@ export class Portfolio {
       techStack: 'JavaScript | HTML | CSS',
       descKey: 'portfolio.pollo.desc',
       image: 'assets/img/projects/el-pollo-loco.webp',
-      liveUrl: 'https://jinsoojang-da.github.io/el-pollo-loco/',
+      liveUrl: 'https://jinsoojang.developerakademie.net/project/el-pollo-loco/',
       githubUrl: 'https://github.com/JinSooJang-DA/el-pollo-loco'
     },
     {
@@ -34,7 +34,7 @@ export class Portfolio {
       techStack: 'JavaScript | HTML | CSS | REST-API',
       descKey: 'portfolio.pokedex.desc',
       image: 'assets/img/projects/pokedex.webp',
-      liveUrl: 'https://jinsoojang-da.github.io/pokedex/',
+      liveUrl: 'https://jinsoojang.developerakademie.net/project/pokedex/',
       githubUrl: 'https://github.com/JinSooJang-DA/pokedex'
     },
     {
