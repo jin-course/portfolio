@@ -27,7 +27,7 @@ export class Testimonials {
     {
       quoteKey: 'testimonials.2.quote',
       authorKey: 'testimonials.2.author',
-      avatar: 'assets/img/profile/about-profile.webp'
+      avatar: 'assets/img/profile/testimonial-patrick.webp'
     },
     {
       quoteKey: 'testimonials.3.quote',
