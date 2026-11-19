@@ -1,4 +1,4 @@
-import { Component, effect, ElementRef, HostListener, inject, signal, viewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LegalService } from '../../services/legal';
 import { Imprint } from '../../pages/imprint/imprint';
 import { PrivacyPolicy } from '../../pages/privacy-policy/privacy-policy';
@@ -13,26 +13,4 @@ import { PrivacyPolicy } from '../../pages/privacy-policy/privacy-policy';
 })
 export class LegalModal {
   legal = inject(LegalService);
-  private content = viewChild<ElementRef<HTMLElement>>('content');
-  /** The arrows are only shown when the text is longer than the modal. */
-  scrollable = signal(false);
-
-  constructor() {
-    effect(() => {
-      this.content();
-      requestAnimationFrame(() => this.checkScrollable());
-    });
-  }
-
-  @HostListener('window:resize')
-  checkScrollable(): void {
-    const el = this.content()?.nativeElement;
-    this.scrollable.set(!!el && el.scrollHeight > el.clientHeight + 1);
-  }
-
-  /** Scrolls the text inside the modal (direction: -1 = up, 1 = down). */
-  scroll(direction: -1 | 1): void {
-    const el = this.content()?.nativeElement;
-    el?.scrollBy({ top: direction * el.clientHeight * 0.8, behavior: 'smooth' });
-  }
 }
