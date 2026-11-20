@@ -18,11 +18,11 @@
 
     <h2>3. Kontaktformular</h2>
     <p>
-      Wenn du das Kontaktformular nutzt, werden Name, E-Mail-Adresse und Nachricht nicht auf dieser
-      Website gespeichert. Mit dem Absenden öffnet sich dein E-Mail-Programm mit der vorbereiteten
-      Nachricht. Erst wenn du die E-Mail abschickst, erhalte ich deine Daten. Ich verwende sie
-      ausschließlich, um deine Anfrage zu beantworten (Art. 6 Abs. 1 lit. b bzw. f DSGVO) und lösche
-      sie, sobald die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten bestehen.
+      Wenn du das Kontaktformular nutzt, werden Name, E-Mail-Adresse und Nachricht über den
+      Formular-Dienstleister Web3Forms übermittelt und per E-Mail an mich weitergeleitet. Auf dieser
+      Website werden sie nicht gespeichert. Ich verwende deine Daten ausschließlich, um deine Anfrage
+      zu beantworten (Art. 6 Abs. 1 lit. b bzw. f DSGVO) und lösche sie, sobald die Anfrage erledigt
+      ist und keine gesetzlichen Aufbewahrungspflichten bestehen.
     </p>
 
     <h2>4. Schriftarten (Google Fonts)</h2>
@@ -34,7 +34,7 @@
 
     <h2>5. Spracheinstellung</h2>
     <p>
-      Deine gewählte Sprache (DE/EN) wird im lokalen Speicher deines Browsers abgelegt, damit sie
+      Deine gewählte Sprache (DE/EN/KO) wird im lokalen Speicher deines Browsers abgelegt, damit sie
       beim nächsten Besuch erhalten bleibt. Diese Information verlässt deinen Browser nicht.
     </p>
 
@@ -50,6 +50,54 @@
       Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO). Wende dich dafür an die oben genannte
       E-Mail-Adresse. Außerdem kannst du dich bei einer Datenschutzbehörde beschweren, z. B. bei der
       Landesbeauftragten für Datenschutz und Informationsfreiheit Nordrhein-Westfalen.
+    </p>
+  } @else if (ts.currentLang() === 'ko') {
+    <h1>개인정보 처리방침</h1>
+
+    <h2>1. 책임자</h2>
+    <p>
+      Jin Soo Jang, Teigelesch 11, 48145 Münster, 독일<br />
+      이메일: hello@iamjin.de
+    </p>
+
+    <h2>2. 호스팅 및 서버 로그 파일</h2>
+    <p>
+      이 웹사이트는 외부 업체에서 호스팅됩니다. 방문 시 기술적으로 필요한 데이터(예: IP 주소, 날짜와
+      시간, 요청한 페이지, 브라우저 종류)가 서버 로그 파일에 처리됩니다. 법적 근거는 GDPR 제6조 제1항
+      (f)호(웹사이트의 운영 및 보안)입니다.
+    </p>
+
+    <h2>3. 문의 양식</h2>
+    <p>
+      문의 양식을 사용하면 이름, 이메일 주소, 메시지가 양식 서비스 제공업체인 Web3Forms를 통해
+      전달되어 이메일로 저에게 전송됩니다. 이 웹사이트에는 저장되지 않습니다. 저는 이 데이터를
+      문의에 답변하는 목적으로만 사용하며(GDPR 제6조 제1항 (b)호 또는 (f)호), 문의가 처리되고 법적
+      보관 의무가 없으면 삭제합니다.
+    </p>
+
+    <h2>4. 글꼴 (Google Fonts)</h2>
+    <p>
+      "Poppins" 글꼴은 Google Fonts(Google Ireland Limited)에서 불러옵니다. 이때 IP 주소가 Google에
+      전송됩니다. 법적 근거는 GDPR 제6조 제1항 (f)호(웹사이트의 일관되고 보기 좋은 표시)입니다.
+    </p>
+
+    <h2>5. 언어 설정</h2>
+    <p>
+      선택한 언어(DE/EN/KO)는 다음 방문에도 유지되도록 브라우저의 로컬 저장소에 저장됩니다. 이 정보는
+      브라우저 밖으로 나가지 않습니다.
+    </p>
+
+    <h2>6. 외부 링크</h2>
+    <p>
+      GitHub, LinkedIn, 프로젝트 데모로 연결되는 링크는 외부 사이트로 이동합니다. 해당 사이트의
+      데이터 처리는 각 운영자가 책임집니다.
+    </p>
+
+    <h2>7. 이용자의 권리</h2>
+    <p>
+      이용자는 열람, 정정, 삭제, 처리 제한, 데이터 이동, 이의 제기에 대한 권리를 가집니다(GDPR 제15조~제21조).
+      위 이메일 주소로 연락해 주세요. 또한 개인정보 보호 감독기관에 이의를 제기할 수 있습니다. 예를 들어
+      노르트라인베스트팔렌주 개인정보 보호 및 정보 자유 담당관이 있습니다.
     </p>
   } @else {
     <h1>Privacy Policy</h1>
@@ -69,11 +117,10 @@
 
     <h2>3. Contact form</h2>
     <p>
-      If you use the contact form, your name, email address and message are not stored on this
-      website. When you send the form, your email program opens with the prepared message. I only
-      receive your data once you send that email. I use it solely to answer your request
-      (Art. 6 (1) (b) or (f) GDPR) and delete it once the request is settled and no legal retention
-      duties apply.
+      If you use the contact form, your name, email address and message are sent via the form
+      service provider Web3Forms and forwarded to me by email. They are not stored on this website.
+      I use your data solely to answer your request (Art. 6 (1) (b) or (f) GDPR) and delete it once
+      the request is settled and no legal retention duties apply.
     </p>
 
     <h2>4. Fonts (Google Fonts)</h2>
@@ -85,7 +132,7 @@
 
     <h2>5. Language setting</h2>
     <p>
-      Your chosen language (DE/EN) is saved in your browser's local storage so that it is kept for
+      Your chosen language (DE/EN/KO) is saved in your browser's local storage so that it is kept for
       your next visit. This information never leaves your browser.
     </p>
 
