@@ -7,7 +7,8 @@ interface ProjectItem {
   descKey: string;
   image: string;
   liveUrl: string;
-  githubUrl: string;
+  /** Optional: private repositories have no GitHub button. */
+  githubUrl?: string;
 }
 
 @Component({
@@ -21,6 +22,13 @@ export class Portfolio {
   ts = inject(TranslationService);
 
   projects: ProjectItem[] = [
+    {
+      title: 'Go-Stop',
+      techStack: 'JavaScript | HTML | CSS | PWA',
+      descKey: 'portfolio.gostop.desc',
+      image: 'assets/img/projects/gostop.webp',
+      liveUrl: 'https://gostop.iamjin.de/'
+    },
     {
       title: 'El Pollo Loco',
       techStack: 'JavaScript | HTML | CSS',

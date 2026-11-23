@@ -36,14 +36,16 @@
             >
               {{ ts.t('portfolio.live') }}
             </a>
-            <a
-              [href]="project.githubUrl"
-              target="_blank"
-              rel="noopener"
-              class="btn-github"
-            >
-              GitHub
-            </a>
+            @if (project.githubUrl) {
+              <a
+                [href]="project.githubUrl"
+                target="_blank"
+                rel="noopener"
+                class="btn-github"
+              >
+                GitHub
+              </a>
+            }
           </div>
         </div>
       </article>
